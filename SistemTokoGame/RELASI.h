@@ -13,8 +13,7 @@ struct Purchase {
     int playtime;
 };
 
-struct elmRelasi;
-typedef elmRelasi* adrRelasi;
+typedef struct elmRelasi *adrRelasi;
 
 struct elmRelasi {
     Purchase info;
@@ -30,8 +29,8 @@ struct ListRelasi {
 void createListRelasi(ListRelasi &LR);
 adrRelasi newRelasi(Purchase x, adrGame G, adrUser U);
 void insertLastRelasi(ListRelasi &LR, adrRelasi R);
-adrRelasi findRelation(ListRelasi LR, adrGame G, adrUser U);
 
+adrRelasi findRelation(ListRelasi LR, adrGame G, adrUser U);
 void deleteRelation(ListRelasi &LR, adrGame G, adrUser U);
 
 void showRelations(ListRelasi LR);

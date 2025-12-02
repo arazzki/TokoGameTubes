@@ -12,8 +12,7 @@ struct Game {
     float price;
 };
 
-struct elmGame;
-typedef elmGame* adrGame;
+typedef struct elmGame *adrGame;
 
 struct elmGame {
     Game info;

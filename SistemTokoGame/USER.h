@@ -12,8 +12,7 @@ struct User {
     int level;
 };
 
-struct elmUser;
-typedef elmUser* adrUser;
+typedef struct elmUser *adrUser;
 
 struct elmUser {
     User info;
