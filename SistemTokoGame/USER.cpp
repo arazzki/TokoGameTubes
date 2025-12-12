@@ -54,12 +54,22 @@ void deleteUserOnly(ListUser &LU, string idUser) {
 }
 
 void showAllUsers(ListUser LU) {
+    if (LU.first == NULL) {
+        cout << "Belum ada data user.\n";
+        return;
+    }
+
+    cout << "=============== DAFTAR USER ===============\n";
+    cout << "ID\tUsername\tEmail\t\tLevel\n";
+    cout << "-------------------------------------------\n";
+
     adrUser p = LU.first;
     while (p != NULL) {
-        cout << p->info.idUser << " | "
-             << p->info.username << " | "
-             << p->info.email << " | "
+        cout << p->info.idUser << "\t"
+             << p->info.username << "\t\t"
+             << p->info.email << "\t"
              << p->info.level << endl;
         p = p->next;
     }
 }
+
