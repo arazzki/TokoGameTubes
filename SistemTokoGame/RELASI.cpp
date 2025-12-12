@@ -58,7 +58,7 @@ void deleteRelation(ListRelasi &LR, adrGame G, adrUser U) {
 void showRelations(ListRelasi LR) {
     adrRelasi p = LR.first;
     while (p != NULL) {
-        cout << p->user->info.username << " bought "
+        cout << p->user->info.username << " membeli "
              << p->game->info.title << " | Playtime: "
              << p->info.playtime << "h\n";
         p = p->next;

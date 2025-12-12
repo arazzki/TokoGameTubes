@@ -54,13 +54,23 @@ void deleteGameOnly(ListGame &LG, string idGame) {
 }
 
 void showAllGames(ListGame LG) {
+    if (LG.first == NULL) {
+        cout << "Belum ada data game.\n";
+        return;
+    }
+
+    cout << "================ DAFTAR GAME ================\n";
+    cout << "ID\tTitle\t\tGenre\t\tHarga\n";
+    cout << "----------------------------------------------\n";
+
     adrGame p = LG.first;
     while (p != NULL) {
-        cout << p->info.idGame << " | "
-             << p->info.title << " | "
-             << p->info.genre << " | "
+        cout << p->info.idGame << "\t"
+             << p->info.title << "\t\t"
+             << p->info.genre << "\t\t"
              << p->info.price << endl;
         p = p->next;
     }
 }
+
 
