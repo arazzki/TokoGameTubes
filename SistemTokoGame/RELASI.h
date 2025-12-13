@@ -30,7 +30,7 @@ void createListRelasi(ListRelasi &LR);
 adrRelasi newRelasi(const Purchase &x, adrGame G, adrUser U);
 void insertLastRelasi(ListRelasi &LR, adrRelasi R);
 adrRelasi findRelation(ListRelasi LR, adrGame G, adrUser U);
-void deleteRelation(ListRelasi &LR, adrGame G, adrUser U); // delete first match
+void deleteRelation(ListRelasi &LR, adrGame G, adrUser U);
 void showRelations(ListRelasi LR);
 void showUsersOfGame(ListRelasi LR, adrGame G);
 void showGamesOfUser(ListRelasi LR, adrUser U);
