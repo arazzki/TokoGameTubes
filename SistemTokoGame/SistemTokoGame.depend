@@ -8,23 +8,24 @@
 	"USER.h"
 	"RELASI.h"
 
-1765444756 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\relasi.cpp
+1765634964 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\relasi.cpp
 	"Relasi.h"
+	<iostream>
 
 1765547519 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\user.cpp
 	"User.h"
 
-1764678292 c:\users\dell\documents\tubesstrukdat\sistemtokogame\game.h
+1765634831 c:\users\dell\documents\tubesstrukdat\sistemtokogame\game.h
 	<iostream>
 	<string>
 
-1764678301 c:\users\dell\documents\tubesstrukdat\sistemtokogame\user.h
+1765635178 c:\users\dell\documents\tubesstrukdat\sistemtokogame\user.h
 	<iostream>
 	<string>
 
-1764678321 c:\users\dell\documents\tubesstrukdat\sistemtokogame\relasi.h
+1765635163 c:\users\dell\documents\tubesstrukdat\sistemtokogame\relasi.h
 	<iostream>
 	<string>
-	"GAME.h"
-	"USER.h"
+	"Game.h"
+	"User.h"
 

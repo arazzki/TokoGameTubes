@@ -6,7 +6,6 @@ using namespace std;
 #include "User.h"
 #include "Relasi.h"
 
-// --- input validators ---
 int inputIntValidated() {
     int x;
     while (!(cin >> x)) {
@@ -14,7 +13,7 @@ int inputIntValidated() {
         cin.ignore(1000, '\n');
         cout << "Input harus angka (int). Masukkan lagi: ";
     }
-    cin.ignore(1000, '\n'); // clear rest of line
+    cin.ignore(1000, '\n');
     return x;
 }
 
@@ -29,24 +28,23 @@ float inputFloatValidated() {
     return x;
 }
 
-// simple string input (no spaces) using cin >> (fits coursework)
 void menu() {
     cout << "\n=== Steam Store MLL Type B (Menu) ===\n";
     cout << "1. Insert Game\n";
     cout << "2. Insert User\n";
     cout << "3. Insert Purchase (relation)\n";
-    cout << "4. Show All Games\n";
-    cout << "5. Show All Users\n";
-    cout << "6. Show All Purchases\n";
+    cout << "4. Tampilkan semua Games\n";
+    cout << "5. Tampilkan Semua Users\n";
+    cout << "6. Tampilkan Semua Purchases\n";
     cout << "7. Show buyers of a game\n";
     cout << "8. Show games of a user\n";
     cout << "9. Delete Game (cascade)\n";
     cout << "10. Delete User (cascade)\n";
     cout << "11. Delete Purchase\n";
     cout << "12. Count functions\n";
-    cout << "13. Edit Purchase (change relation)\n";
+    cout << "13. Edit Purchase\n";
     cout << "0. Exit\n";
-    cout << "Choose: ";
+    cout << "Pilih: ";
 }
 
 void countMenu() {
@@ -74,9 +72,9 @@ int main() {
 
         if (choice == 1) {
             Game g;
-            cout << "ID Game (no spaces): "; cin >> g.idGame;
-            cout << "Title (no spaces): "; cin >> g.title;
-            cout << "Genre (no spaces): "; cin >> g.genre;
+            cout << "ID Game: "; cin >> g.idGame;
+            cout << "Title: "; cin >> g.title;
+            cout << "Genre: "; cin >> g.genre;
             cout << "Price (float): "; g.price = inputFloatValidated();
             insertLastGame(LG, newGame(g));
             cout << "Game added.\n";
@@ -209,7 +207,7 @@ int main() {
             cout << "Invalid option.\n";
         }
 
-    } // end main loop
+    }
 
     return 0;
 }

@@ -1,5 +1,5 @@
 #include "User.h"
-#include "Relasi.h" // for ListRelasi in deleteUser
+#include "Relasi.h"
 
 void createListUser(ListUser &LU) {
     LU.first = nullptr;
