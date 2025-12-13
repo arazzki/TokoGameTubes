@@ -24,10 +24,12 @@ struct ListGame {
 };
 
 void createListGame(ListGame &LG);
-adrGame newGame(Game x);
+adrGame newGame(const Game &x);
 void insertLastGame(ListGame &LG, adrGame G);
-adrGame findGame(ListGame LG, string idGame);
-void deleteGameOnly(ListGame &LG, string idGame);
+adrGame findGame(ListGame LG, const string &idGame);
+void deleteGame(ListGame &LG, struct ListRelasi &LR, const string &idGame); // forward to relasi
+void deleteGameOnly(ListGame &LG, const string &idGame); // delete game node only (no cascade)
 void showAllGames(ListGame LG);
+int countGameNodes(ListGame LG);
 
 #endif
