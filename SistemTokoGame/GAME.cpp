@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "Relasi.h" // for declaration of ListRelasi in deleteGame
+#include "Relasi.h"
 
 void createListGame(ListGame &LG) {
     LG.first = nullptr;
@@ -53,11 +53,9 @@ void deleteGameOnly(ListGame &LG, const string &idGame) {
 }
 
 void deleteGame(ListGame &LG, ListRelasi &LR, const string &idGame) {
-    // find game node pointer first
     adrGame G = findGame(LG, idGame);
     if (G == nullptr) return;
 
-    // remove all relations that refer to this game
     adrRelasi r = LR.first;
     while (r != nullptr) {
         adrRelasi nextR = r->next;
@@ -67,7 +65,6 @@ void deleteGame(ListGame &LG, ListRelasi &LR, const string &idGame) {
         r = nextR;
     }
 
-    // remove the game node itself
     deleteGameOnly(LG, idGame);
 }
 
