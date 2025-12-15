@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Game.h"
 #include "Relasi.h"
 
@@ -5,7 +6,7 @@ void createListGame(ListGame &LG) {
     LG.first = nullptr;
 }
 
-adrGame newGame(const Game &x) {
+adrGame newGame(Game x) {
     adrGame G = new elmGame;
     G->info = x;
     G->next = nullptr;
@@ -17,42 +18,23 @@ void insertLastGame(ListGame &LG, adrGame G) {
         LG.first = G;
     } else {
         adrGame p = LG.first;
-        while (p->next != nullptr) p = p->next;
+        while (p->next != nullptr)
+            p = p->next;
         p->next = G;
     }
 }
 
-adrGame findGame(ListGame LG, const string &idGame) {
+adrGame findGame(ListGame LG, string idGame) {
     adrGame p = LG.first;
     while (p != nullptr) {
-        if (p->info.idGame == idGame) return p;
+        if (p->info.idGame == idGame)
+            return p;
         p = p->next;
     }
     return nullptr;
 }
 
-void deleteGameOnly(ListGame &LG, const string &idGame) {
-    adrGame p = LG.first;
-    adrGame prev = nullptr;
-
-    while (p != nullptr && p->info.idGame != idGame) {
-        prev = p;
-        p = p->next;
-    }
-
-    if (p == nullptr) return;
-
-    if (prev == nullptr) {
-        LG.first = p->next;
-    } else {
-        prev->next = p->next;
-    }
-
-    p->next = nullptr;
-    delete p;
-}
-
-void deleteGame(ListGame &LG, ListRelasi &LR, const string &idGame) {
+void deleteGame(ListGame &LG, ListRelasi &LR, string idGame) {
     adrGame G = findGame(LG, idGame);
     if (G == nullptr) return;
 
@@ -65,7 +47,18 @@ void deleteGame(ListGame &LG, ListRelasi &LR, const string &idGame) {
         r = nextR;
     }
 
-    deleteGameOnly(LG, idGame);
+    adrGame p = LG.first, prev = nullptr;
+    while (p != nullptr && p != G) {
+        prev = p;
+        p = p->next;
+    }
+
+    if (prev == nullptr)
+        LG.first = p->next;
+    else
+        prev->next = p->next;
+
+    delete p;
 }
 
 void showAllGames(ListGame LG) {
@@ -73,22 +66,17 @@ void showAllGames(ListGame LG) {
         cout << "Belum ada data game.\n";
         return;
     }
-    cout << "================ DAFTAR GAME ================\n";
-    cout << "ID\tTitle\t\tGenre\t\tHarga\n";
-    cout << "----------------------------------------------\n";
+
+    cout << "\n=== DAFTAR GAME ===\n";
+    cout << "ID\tJudul\tGenre\tHarga\n";
+    cout << "--------------------------------\n";
+
     adrGame p = LG.first;
     while (p != nullptr) {
         cout << p->info.idGame << "\t"
-             << p->info.title << "\t\t"
-             << p->info.genre << "\t\t"
-             << p->info.price << "\n";
+             << p->info.title << "\t"
+             << p->info.genre << "\t"
+             << p->info.price << endl;
         p = p->next;
     }
-}
-
-int countGameNodes(ListGame LG) {
-    int c = 0;
-    adrGame p = LG.first;
-    while (p != nullptr) { c++; p = p->next; }
-    return c;
 }

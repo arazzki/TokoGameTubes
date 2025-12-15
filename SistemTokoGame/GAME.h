@@ -1,7 +1,6 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 
-#include <iostream>
 #include <string>
 using namespace std;
 
@@ -9,7 +8,7 @@ struct Game {
     string idGame;
     string title;
     string genre;
-    float price;
+    int price;
 };
 
 typedef struct elmGame *adrGame;
@@ -24,12 +23,10 @@ struct ListGame {
 };
 
 void createListGame(ListGame &LG);
-adrGame newGame(const Game &x);
+adrGame newGame(Game x);
 void insertLastGame(ListGame &LG, adrGame G);
-adrGame findGame(ListGame LG, const string &idGame);
-void deleteGame(ListGame &LG, struct ListRelasi &LR, const string &idGame); // forward to relasi
-void deleteGameOnly(ListGame &LG, const string &idGame); // delete game node only (no cascade)
+adrGame findGame(ListGame LG, string idGame);
+void deleteGame(ListGame &LG, struct ListRelasi &LR, string idGame);
 void showAllGames(ListGame LG);
-int countGameNodes(ListGame LG);
 
 #endif

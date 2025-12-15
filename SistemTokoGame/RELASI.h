@@ -1,12 +1,10 @@
 #ifndef RELASI_H_INCLUDED
 #define RELASI_H_INCLUDED
 
-#include <iostream>
 #include <string>
-using namespace std;
-
 #include "Game.h"
 #include "User.h"
+using namespace std;
 
 struct Purchase {
     string date;
@@ -27,19 +25,11 @@ struct ListRelasi {
 };
 
 void createListRelasi(ListRelasi &LR);
-adrRelasi newRelasi(const Purchase &x, adrGame G, adrUser U);
+adrRelasi newRelasi(Purchase x, adrGame G, adrUser U);
 void insertLastRelasi(ListRelasi &LR, adrRelasi R);
 adrRelasi findRelation(ListRelasi LR, adrGame G, adrUser U);
 void deleteRelation(ListRelasi &LR, adrGame G, adrUser U);
-void showRelations(ListRelasi LR);
-void showUsersOfGame(ListRelasi LR, adrGame G);
-void showGamesOfUser(ListRelasi LR, adrUser U);
 
-int countUsersOfGame(ListRelasi LR, adrGame G);
-int countGamesOfUser(ListRelasi LR, adrUser U);
-int countGameWithoutUser(ListGame LG, ListRelasi &LR);
-int countUserWithoutGame(ListUser LU, ListRelasi &LR);
-
-void editRelation(ListRelasi &LR, adrGame oldG, adrUser oldU, adrGame newG, adrUser newU);
+void showAllRelations(ListRelasi LR);
 
 #endif
