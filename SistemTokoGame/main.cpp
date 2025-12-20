@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include "Game.h"
 #include "User.h"
 #include "Relasi.h"
@@ -102,7 +103,7 @@ int main() {
     createListUser(LU);
     createListRelasi(LR);
 
-    initDummy(LG, LU, LR); //ini data dummynya
+    initDummy(LG, LU, LR);
 
     int pilih;
     do {
@@ -124,6 +125,7 @@ int main() {
                 cin >> g.genre;
                 cout << "Harga (USD): ";
                 g.price = inputDouble();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 insertLastGame(LG, newGame(g));
                 cout << "Game berhasil ditambahkan.\n";
             }

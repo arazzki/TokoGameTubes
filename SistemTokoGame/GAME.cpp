@@ -35,14 +35,31 @@ adrGame findGame(ListGame LG, string idGame) {
 }
 
 void deleteGame(ListGame &LG, ListRelasi &LR, string idGame) { //ini gw ganti (will)
-    adrGame p = LG.first, prev = nullptr;
+    adrGame G = findGame(LG, idGame);
+    if (G == nullptr) return;
 
-    while (p != nullptr && p->info.idGame != idGame) {
+    // hapus relasi yang terkait game
+    adrRelasi r = LR.first;
+    while (r != nullptr) {
+        adrRelasi nextR = r->next;
+        if (r->game == G)
+            deleteRelation(LR, r->game, r->user);
+        r = nextR;
+    }
+
+    // hapus game dari list
+    adrGame p = LG.first, prev = nullptr;
+    while (p != nullptr && p != G) {
         prev = p;
         p = p->next;
     }
 
-    if (p == nullptr) return; // game tidak ditemukan
+    if (prev == nullptr)
+        LG.first = p->next;
+    else
+        prev->next = p->next;
+
+    delete p;
 }
 
 void showAllGames(ListGame LG) { //ini gw ganti (will)
