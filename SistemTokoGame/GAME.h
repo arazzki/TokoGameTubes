@@ -2,13 +2,14 @@
 #define GAME_H_INCLUDED
 
 #include <string>
+#include <iomanip>
 using namespace std;
 
 struct Game {
     string idGame;
     string title;
     string genre;
-    int price;
+    double price;
 };
 
 typedef struct elmGame *adrGame;

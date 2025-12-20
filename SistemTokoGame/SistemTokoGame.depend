@@ -30,3 +30,37 @@
 	"Game.h"
 	"User.h"
 
+1766236135 source:c:\users\najoa\documents\github\tokogametubes\sistemtokogame\game.cpp
+	<iostream>
+	"Game.h"
+	"Relasi.h"
+
+1766239148 c:\users\najoa\documents\github\tokogametubes\sistemtokogame\game.h
+	<string>
+	<iomanip>
+
+1766238388 c:\users\najoa\documents\github\tokogametubes\sistemtokogame\relasi.h
+	<string>
+	<iomanip>
+	<iomanip>
+	"Game.h"
+	"User.h"
+
+1766233819 c:\users\najoa\documents\github\tokogametubes\sistemtokogame\user.h
+	<string>
+
+1766235648 source:c:\users\najoa\documents\github\tokogametubes\sistemtokogame\main.cpp
+	<iostream>
+	"Game.h"
+	"User.h"
+	"Relasi.h"
+
+1766238565 source:c:\users\najoa\documents\github\tokogametubes\sistemtokogame\relasi.cpp
+	<iostream>
+	"Relasi.h"
+
+1766237188 source:c:\users\najoa\documents\github\tokogametubes\sistemtokogame\user.cpp
+	<iostream>
+	"User.h"
+	"Relasi.h"
+

@@ -6,10 +6,24 @@ using namespace std;
 
 int inputInt() {
     int x;
-    while (!(cin >> x)) {
+    while (true) {
+        cin >> x;
+        if (!cin.fail()) {
+            cin.ignore(1000, '\n'); // bersihkan sisa input
+            return x;
+        }
         cin.clear();
         cin.ignore(1000, '\n');
         cout << "Input harus angka. Masukkan lagi: ";
+    }
+}
+
+double inputDouble() { //input harga, gw tambah (will)
+    double x;
+    while (!(cin >> x)) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Input harus angka desimal. Masukkan lagi: ";
     }
     return x;
 }
@@ -33,6 +47,51 @@ void menu() {
     cout << "0. Keluar\n";
     cout << "Pilih: ";
 }
+//ini gw tambah dummy (will)
+void initDummy(ListGame &LG, ListUser &LU, ListRelasi &LR) {
+    // dummy game
+    insertLastGame(LG, newGame({"001", "Dota 2", "MOBA", 10.99}));
+    insertLastGame(LG, newGame({"002", "Red Dead Redemption 2", "Action", 7.50}));
+    insertLastGame(LG, newGame({"003", "GTA V", "OpenWorld", 1.99}));
+    insertLastGame(LG, newGame({"004", "The Last Of Us 2", "Story", 7.99}));
+    insertLastGame(LG, newGame({"005", "The Last Of Us", "Story", 6.99}));
+
+    //dummy user
+    insertLastUser(LU, newUser({"084", "william", "william@haha.com"}));
+    insertLastUser(LU, newUser({"138", "ariq", "ariq@yahuu.id"}));
+    insertLastUser(LU, newUser({"068", "rakha", "rak4@mozilla.fox"}));
+
+    //dummy relasi
+    Purchase p;
+
+    p = {"1983-12-04", "Credit Card"};
+    insertLastRelasi(LR, newRelasi(
+        p,
+        findGame(LG, "005"),
+        findUser(LU, "084")
+    ));
+
+    p = {"1987-12-04", "Credit Card"};
+    insertLastRelasi(LR, newRelasi(
+        p,
+        findGame(LG, "004"),
+        findUser(LU, "084")
+    ));
+
+    p = {"2001-06-06", "Cash"};
+    insertLastRelasi(LR, newRelasi(
+        p,
+        findGame(LG, "001"),
+        findUser(LU, "138")
+    ));
+
+    p = {"2012-01-01", "Gift"};
+    insertLastRelasi(LR, newRelasi(
+        p,
+        findGame(LG, "002"),
+        findUser(LU, "068")
+    ));
+}
 
 int main() {
     ListGame LG;
@@ -43,9 +102,12 @@ int main() {
     createListUser(LU);
     createListRelasi(LR);
 
+    initDummy(LG, LU, LR); //ini data dummynya
+
     int pilih;
     do {
         menu();
+        cin.clear();
         pilih = inputInt();
 
         if (pilih == 1) {
@@ -60,8 +122,8 @@ int main() {
                 cin >> g.title;
                 cout << "Genre: ";
                 cin >> g.genre;
-                cout << "Harga: ";
-                g.price = inputInt();
+                cout << "Harga (USD): ";
+                g.price = inputDouble();
                 insertLastGame(LG, newGame(g));
                 cout << "Game berhasil ditambahkan.\n";
             }
@@ -98,12 +160,13 @@ int main() {
                 cout << "Game atau User tidak ditemukan.\n";
             } else if (findRelation(LR, G, U) != nullptr) {
                 cout << "Purchase sudah ada.\n";
-            } else {
+            } else { //ini gw ganti (will)
                 Purchase p;
-                cout << "Tanggal: ";
+                cout << "Tanggal (YYYY-MM-DD): ";
                 cin >> p.date;
-                cout << "Playtime: ";
-                p.playtime = inputInt();
+                cout << "Metode Pembelian: ";
+                cin >> p.method;
+
                 insertLastRelasi(LR, newRelasi(p, G, U));
                 cout << "Purchase berhasil ditambahkan.\n";
             }

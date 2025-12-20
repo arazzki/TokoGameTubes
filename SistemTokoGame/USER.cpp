@@ -59,22 +59,31 @@ void deleteUser(ListUser &LU, ListRelasi &LR, string idUser) {
     delete U;
 }
 
-void showAllUsers(ListUser LU) {
+void showAllUsers(ListUser LU) { //ini gw ubah (will)
     if (LU.first == nullptr) {
         cout << "Belum ada data user.\n";
         return;
     }
 
     cout << "\n=== DAFTAR USER ===\n";
-    cout << "ID\tUsername\tEmail\n";
+
+    cout << left
+         << setw(10) << "ID"
+         << setw(20) << "Username"
+         << setw(35) << "Email" << endl;
+
 
     adrUser p = LU.first;
     while (p != nullptr) {
-        cout << p->info.idUser << "\t"
-             << p->info.username << "\t\t"
-             << p->info.email << endl;
+        cout << left
+             << setw(10) << p->info.idUser
+             << setw(20) << p->info.username
+             << setw(35) << p->info.email
+             << endl;
         p = p->next;
     }
+
+    cout << "Total User: " << countUser(LU) << endl;
 }
 
 int countUser(ListUser LU) {

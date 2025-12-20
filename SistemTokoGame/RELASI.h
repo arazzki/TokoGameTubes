@@ -2,13 +2,15 @@
 #define RELASI_H_INCLUDED
 
 #include <string>
+#include <iomanip>
+#include <iomanip>
 #include "Game.h"
 #include "User.h"
 using namespace std;
 
 struct Purchase {
     string date;
-    int playtime;
+    string method; //ini gw ganti (will)
 };
 
 typedef struct elmRelasi *adrRelasi;

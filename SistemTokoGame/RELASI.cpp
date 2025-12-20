@@ -51,23 +51,33 @@ void deleteRelation(ListRelasi &LR, adrGame G, adrUser U) {
     }
 }
 
-void showAllRelations(ListRelasi LR) {
+void showAllRelations(ListRelasi LR) { //ini gw ubah (will)
     if (LR.first == nullptr) {
         cout << "Belum ada transaksi.\n";
         return;
     }
 
     cout << "\n=== DAFTAR PURCHASE ===\n";
-    cout << "User\tGame\tTanggal\tPlaytime\n";
+
+    cout << left
+         << setw(20) << "User"
+         << setw(30) << "Game"
+         << setw(15) << "Tanggal"
+         << setw(10) << "Metode" << endl;
+
 
     adrRelasi p = LR.first;
     while (p != nullptr) {
-        cout << p->user->info.username << "\t"
-             << p->game->info.title << "\t"
-             << p->info.date << "\t"
-             << p->info.playtime << endl;
+        cout << left
+             << setw(20) << p->user->info.username
+             << setw(30) << p->game->info.title
+             << setw(15) << p->info.date
+             << setw(10) << p->info.method
+             << endl;
         p = p->next;
     }
+
+    cout << "Total Purchase: " << countRelation(LR) << endl;
 }
 
 int countRelation(ListRelasi LR) {

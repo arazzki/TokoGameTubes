@@ -34,49 +34,42 @@ adrGame findGame(ListGame LG, string idGame) {
     return nullptr;
 }
 
-void deleteGame(ListGame &LG, ListRelasi &LR, string idGame) {
-    adrGame G = findGame(LG, idGame);
-    if (G == nullptr) return;
-
-    adrRelasi r = LR.first;
-    while (r != nullptr) {
-        adrRelasi nextR = r->next;
-        if (r->game == G)
-            deleteRelation(LR, r->game, r->user);
-        r = nextR;
-    }
-
+void deleteGame(ListGame &LG, ListRelasi &LR, string idGame) { //ini gw ganti (will)
     adrGame p = LG.first, prev = nullptr;
-    while (p != nullptr && p != G) {
+
+    while (p != nullptr && p->info.idGame != idGame) {
         prev = p;
         p = p->next;
     }
 
-    if (prev == nullptr)
-        LG.first = p->next;
-    else
-        prev->next = p->next;
-
-    delete p;
+    if (p == nullptr) return; // game tidak ditemukan
 }
 
-void showAllGames(ListGame LG) {
+void showAllGames(ListGame LG) { //ini gw ganti (will)
     if (LG.first == nullptr) {
         cout << "Belum ada data game.\n";
         return;
     }
 
     cout << "\n=== DAFTAR GAME ===\n";
-    cout << "ID\tJudul\tGenre\tHarga\n";
+    cout << left
+         << setw(10) << "ID"
+         << setw(25) << "Judul"
+         << setw(15) << "Genre"
+         << setw(10) << "Harga" << endl;
 
     adrGame p = LG.first;
     while (p != nullptr) {
-        cout << p->info.idGame << "\t"
-             << p->info.title << "\t"
-             << p->info.genre << "\t"
-             << p->info.price << endl;
+        cout << left
+             << setw(10) << p->info.idGame
+             << setw(25) << p->info.title
+             << setw(15) << p->info.genre
+             << setw(10) << p->info.price
+             << endl;
         p = p->next;
     }
+
+    cout << "Total Game: " << countGame(LG) << endl;
 }
 
 int countGame(ListGame LG) {
