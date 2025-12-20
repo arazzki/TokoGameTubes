@@ -29,7 +29,7 @@ adrRelasi newRelasi(Purchase x, adrGame G, adrUser U);
 void insertLastRelasi(ListRelasi &LR, adrRelasi R);
 adrRelasi findRelation(ListRelasi LR, adrGame G, adrUser U);
 void deleteRelation(ListRelasi &LR, adrGame G, adrUser U);
-
 void showAllRelations(ListRelasi LR);
+int countRelation(ListRelasi LR);
 
 #endif

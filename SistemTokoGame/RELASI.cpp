@@ -59,7 +59,6 @@ void showAllRelations(ListRelasi LR) {
 
     cout << "\n=== DAFTAR PURCHASE ===\n";
     cout << "User\tGame\tTanggal\tPlaytime\n";
-    cout << "--------------------------------------\n";
 
     adrRelasi p = LR.first;
     while (p != nullptr) {
@@ -69,4 +68,14 @@ void showAllRelations(ListRelasi LR) {
              << p->info.playtime << endl;
         p = p->next;
     }
+}
+
+int countRelation(ListRelasi LR) {
+    int total = 0;
+    adrRelasi p = LR.first;
+    while (p != nullptr) {
+        total++;
+        p = p->next;
+    }
+    return total;
 }

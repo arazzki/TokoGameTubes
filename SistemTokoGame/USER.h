@@ -15,6 +15,7 @@ typedef struct elmUser *adrUser;
 struct elmUser {
     User info;
     adrUser next;
+    adrUser prev;
 };
 
 struct ListUser {
@@ -27,5 +28,6 @@ void insertLastUser(ListUser &LU, adrUser U);
 adrUser findUser(ListUser LU, string idUser);
 void deleteUser(ListUser &LU, struct ListRelasi &LR, string idUser);
 void showAllUsers(ListUser LU);
+int countUser(ListUser LU);
 
 #endif

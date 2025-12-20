@@ -1,33 +1,31 @@
 # depslib dependency file v1.0
-1765635246 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\game.cpp
+1766221706 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\game.cpp
+	<iostream>
 	"Game.h"
 	"Relasi.h"
 
-1765635504 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\main.cpp
+1766221706 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\main.cpp
 	<iostream>
-	<string>
 	"Game.h"
 	"User.h"
 	"Relasi.h"
 
-1765634964 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\relasi.cpp
-	"Relasi.h"
+1766221707 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\relasi.cpp
 	<iostream>
+	"Relasi.h"
 
-1765635504 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\user.cpp
+1766221706 source:c:\users\dell\documents\tubesstrukdat\sistemtokogame\user.cpp
+	<iostream>
 	"User.h"
 	"Relasi.h"
 
-1765799067 c:\users\dell\documents\tubesstrukdat\sistemtokogame\game.h
-	<iostream>
+1766221707 c:\users\dell\documents\tubesstrukdat\sistemtokogame\game.h
 	<string>
 
-1765635178 c:\users\dell\documents\tubesstrukdat\sistemtokogame\user.h
-	<iostream>
+1766221707 c:\users\dell\documents\tubesstrukdat\sistemtokogame\user.h
 	<string>
 
-1765635163 c:\users\dell\documents\tubesstrukdat\sistemtokogame\relasi.h
-	<iostream>
+1766221706 c:\users\dell\documents\tubesstrukdat\sistemtokogame\relasi.h
 	<string>
 	"Game.h"
 	"User.h"

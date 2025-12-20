@@ -9,13 +9,13 @@ int inputInt() {
     while (!(cin >> x)) {
         cin.clear();
         cin.ignore(1000, '\n');
-        cout << "Masukkan angka: ";
+        cout << "Input harus angka. Masukkan lagi: ";
     }
     return x;
 }
 
 void menu() {
-    cout << "\n=== MENU STEAM STORE (MLL) ===\n";
+    cout << "\n====== MENU STEAM STORE (MLL) ======\n";
     cout << "1. Tambah Game\n";
     cout << "2. Tambah User\n";
     cout << "3. Tambah Purchase\n";
@@ -27,6 +27,9 @@ void menu() {
     cout << "9. Hapus Purchase\n";
     cout << "10. Cari Game\n";
     cout << "11. Cari User\n";
+    cout << "12. Count Game\n";
+    cout << "13. Count User\n";
+    cout << "14. Count Purchase\n";
     cout << "0. Keluar\n";
     cout << "Pilih: ";
 }
@@ -51,7 +54,7 @@ int main() {
             cin >> g.idGame;
 
             if (findGame(LG, g.idGame) != nullptr) {
-                cout << "ID Game sudah digunakan.\n";
+                cout << "ID Game sudah digunakan. Tolong gunakan ID Game berbeda\n";
             } else {
                 cout << "Judul: ";
                 cin >> g.title;
@@ -63,13 +66,14 @@ int main() {
                 cout << "Game berhasil ditambahkan.\n";
             }
         }
+
         else if (pilih == 2) {
             User u;
             cout << "ID User: ";
             cin >> u.idUser;
 
             if (findUser(LU, u.idUser) != nullptr) {
-                cout << "ID User sudah digunakan.\n";
+                cout << "ID User sudah digunakan. Tolong gunakan ID User berbeda\n";
             } else {
                 cout << "Username: ";
                 cin >> u.username;
@@ -79,6 +83,7 @@ int main() {
                 cout << "User berhasil ditambahkan.\n";
             }
         }
+
         else if (pilih == 3) {
             string gid, uid;
             cout << "ID Game: ";
@@ -103,32 +108,45 @@ int main() {
                 cout << "Purchase berhasil ditambahkan.\n";
             }
         }
-        else if (pilih == 4) showAllGames(LG);
-        else if (pilih == 5) showAllUsers(LU);
-        else if (pilih == 6) showAllRelations(LR);
+
+        else if (pilih == 4) {
+            showAllGames(LG);
+        }
+
+        else if (pilih == 5) {
+            showAllUsers(LU);
+        }
+
+        else if (pilih == 6) {
+            showAllRelations(LR);
+        }
 
         else if (pilih == 7) {
             string id;
             cout << "ID Game: ";
             cin >> id;
-            if (findGame(LG, id) == nullptr)
+
+            if (findGame(LG, id) == nullptr) {
                 cout << "ID Game tidak ditemukan.\n";
-            else {
+            } else {
                 deleteGame(LG, LR, id);
                 cout << "Game berhasil dihapus.\n";
             }
         }
+
         else if (pilih == 8) {
             string id;
             cout << "ID User: ";
             cin >> id;
-            if (findUser(LU, id) == nullptr)
+
+            if (findUser(LU, id) == nullptr) {
                 cout << "ID User tidak ditemukan.\n";
-            else {
+            } else {
                 deleteUser(LU, LR, id);
                 cout << "User berhasil dihapus.\n";
             }
         }
+
         else if (pilih == 9) {
             string gid, uid;
             cout << "ID Game: ";
@@ -139,37 +157,59 @@ int main() {
             adrGame G = findGame(LG, gid);
             adrUser U = findUser(LU, uid);
 
-            if (G == nullptr || U == nullptr)
+            if (G == nullptr || U == nullptr) {
                 cout << "Game atau User tidak ditemukan.\n";
-            else if (findRelation(LR, G, U) == nullptr)
+            } else if (findRelation(LR, G, U) == nullptr) {
                 cout << "Purchase tidak ditemukan.\n";
-            else {
+            } else {
                 deleteRelation(LR, G, U);
                 cout << "Purchase berhasil dihapus.\n";
             }
         }
+
         else if (pilih == 10) {
             string id;
             cout << "ID Game: ";
             cin >> id;
+
             adrGame G = findGame(LG, id);
-            if (G == nullptr)
+            if (G == nullptr) {
                 cout << "ID Game tidak ditemukan.\n";
-            else
-                cout << "Judul: " << G->info.title
-                     << ", Genre: " << G->info.genre
-                     << ", Harga: " << G->info.price << endl;
+            } else {
+                cout << "Judul : " << G->info.title << endl;
+                cout << "Genre : " << G->info.genre << endl;
+                cout << "Harga : " << G->info.price << endl;
+            }
         }
+
         else if (pilih == 11) {
             string id;
             cout << "ID User: ";
             cin >> id;
+
             adrUser U = findUser(LU, id);
-            if (U == nullptr)
+            if (U == nullptr) {
                 cout << "ID User tidak ditemukan.\n";
-            else
-                cout << "Username: " << U->info.username
-                     << ", Email: " << U->info.email << endl;
+            } else {
+                cout << "Username : " << U->info.username << endl;
+                cout << "Email    : " << U->info.email << endl;
+            }
+        }
+
+        else if (pilih == 12) {
+            cout << "Total Game: " << countGame(LG) << endl;
+        }
+
+        else if (pilih == 13) {
+            cout << "Total User: " << countUser(LU) << endl;
+        }
+
+        else if (pilih == 14) {
+            cout << "Total Purchase: " << countRelation(LR) << endl;
+        }
+
+        else if (pilih != 0) {
+            cout << "Pilihan menu tidak tersedia.\n";
         }
 
     } while (pilih != 0);

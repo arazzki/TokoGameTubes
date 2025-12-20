@@ -10,6 +10,7 @@ adrUser newUser(User x) {
     adrUser U = new elmUser;
     U->info = x;
     U->next = nullptr;
+    U->prev = nullptr;
     return U;
 }
 
@@ -21,6 +22,7 @@ void insertLastUser(ListUser &LU, adrUser U) {
         while (p->next != nullptr)
             p = p->next;
         p->next = U;
+        U->prev = p;
     }
 }
 
@@ -41,24 +43,20 @@ void deleteUser(ListUser &LU, ListRelasi &LR, string idUser) {
     adrRelasi r = LR.first;
     while (r != nullptr) {
         adrRelasi nextR = r->next;
-        if (r->user == U) {
+        if (r->user == U)
             deleteRelation(LR, r->game, r->user);
-        }
         r = nextR;
     }
 
-    adrUser p = LU.first, prev = nullptr;
-    while (p != nullptr && p != U) {
-        prev = p;
-        p = p->next;
-    }
-
-    if (prev == nullptr)
-        LU.first = p->next;
+    if (U->prev != nullptr)
+        U->prev->next = U->next;
     else
-        prev->next = p->next;
+        LU.first = U->next;
 
-    delete p;
+    if (U->next != nullptr)
+        U->next->prev = U->prev;
+
+    delete U;
 }
 
 void showAllUsers(ListUser LU) {
@@ -69,7 +67,6 @@ void showAllUsers(ListUser LU) {
 
     cout << "\n=== DAFTAR USER ===\n";
     cout << "ID\tUsername\tEmail\n";
-    cout << "--------------------------------\n";
 
     adrUser p = LU.first;
     while (p != nullptr) {
@@ -78,4 +75,14 @@ void showAllUsers(ListUser LU) {
              << p->info.email << endl;
         p = p->next;
     }
+}
+
+int countUser(ListUser LU) {
+    int total = 0;
+    adrUser p = LU.first;
+    while (p != nullptr) {
+        total++;
+        p = p->next;
+    }
+    return total;
 }

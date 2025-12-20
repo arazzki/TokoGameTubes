@@ -41,9 +41,8 @@ void deleteGame(ListGame &LG, ListRelasi &LR, string idGame) {
     adrRelasi r = LR.first;
     while (r != nullptr) {
         adrRelasi nextR = r->next;
-        if (r->game == G) {
+        if (r->game == G)
             deleteRelation(LR, r->game, r->user);
-        }
         r = nextR;
     }
 
@@ -69,7 +68,6 @@ void showAllGames(ListGame LG) {
 
     cout << "\n=== DAFTAR GAME ===\n";
     cout << "ID\tJudul\tGenre\tHarga\n";
-    cout << "--------------------------------\n";
 
     adrGame p = LG.first;
     while (p != nullptr) {
@@ -79,4 +77,14 @@ void showAllGames(ListGame LG) {
              << p->info.price << endl;
         p = p->next;
     }
+}
+
+int countGame(ListGame LG) {
+    int total = 0;
+    adrGame p = LG.first;
+    while (p != nullptr) {
+        total++;
+        p = p->next;
+    }
+    return total;
 }

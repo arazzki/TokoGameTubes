@@ -28,5 +28,6 @@ void insertLastGame(ListGame &LG, adrGame G);
 adrGame findGame(ListGame LG, string idGame);
 void deleteGame(ListGame &LG, struct ListRelasi &LR, string idGame);
 void showAllGames(ListGame LG);
+int countGame(ListGame LG);
 
 #endif
