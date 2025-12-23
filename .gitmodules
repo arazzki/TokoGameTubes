@@ -1,0 +1,3 @@
+[submodule "TubesStrukdat"]
+	path = TubesStrukdat
+	url = https://github.com/arazzki/TokoGameTubes.git
